@@ -1,0 +1,27 @@
+<header class="header">
+    <div class="header-left">
+      <a routerLink="/posts-feed" class="header-link">UDIAN</a>
+    </div>
+  
+  </header>
+<div class="profile-page">
+    <div class="profile-header">
+      <h3>{{ userData.username }}</h3>
+    </div>
+
+    <hr />
+  
+    <h3>My Posts</h3>
+    <div class="posts-feed">
+      <div class="post-card" *ngFor="let post of posts">
+        <div class="post-image">
+          <img *ngIf="post.image" [src]="post.image" alt="Post image" />
+        </div>
+  
+        <div class="post-caption">
+          <p>{{ post.content }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  

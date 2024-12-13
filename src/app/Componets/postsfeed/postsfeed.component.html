@@ -1,0 +1,95 @@
+<div class="posts-container">
+  <header class="header">
+    <div class="header-left">
+      <a routerLink="/posts-feed" class="header-link">UDIAN</a>
+    </div>
+    <div class="header-right">
+      <i id="hd" class="fas fa-bell" (click)="toggleNotifications()">
+        <span *ngIf="notificationCount > 0" class="notification-count">{{notificationCount}}</span>
+      </i>
+      <i id="hd" class="fas fa-comments" (click)="toggleChatBox()"></i>
+      <i (click) = "navigatetoProfile()" id="profile-icon" class="fas fa-user-circle" ></i> 
+    </div>
+  </header>
+
+  <div *ngIf="isNotificationsOpen" class="notifications-box" >
+    <h3>Notifications</h3>
+    <ul>
+      <li  *ngFor="let notification of notificationMessages">
+        {{ notification.message }}
+         
+      </li>
+    </ul>
+  </div>
+
+  <div *ngIf="isChatBoxOpen" class="chat-box">
+    <h3>Chat with:</h3>
+    <ul *ngIf="usernames.length > 0; else noUsers">
+      <li *ngFor="let username of usernames" (click)="openChat(username)">
+        {{ username }}
+      </li>
+    </ul>
+    <ng-template #noUsers>
+      <p>No users available for chat.</p>
+    </ng-template>
+  </div>
+
+  <div *ngIf="selectedUser" class="chat-popup">
+    <div class="chat-header">
+      <span>{{ selectedUser.name }}</span>
+      <button class="close-chat" (click)="closeChat()">X</button>
+    </div>
+    <div class="chat-messages">
+      <div *ngFor="let msg of Messages">
+        <p>{{msg.messageContent}}</p>
+      </div>
+    </div>
+    <input type="text" placeholder="Type a message..." />
+    <button (click)="sendMessage()">Send</button>
+  </div>
+
+
+  <div class="posts-feed">
+   
+
+    <div class="post-card" *ngFor="let post of posts">
+      <div class="post-header">
+        <span class="post-username">{{ post.username }}</span>
+      </div>
+
+      <div class="post-image" >
+        <img *ngIf="post.image" [src]="post.image" alt="Post image" />
+      </div>
+
+      <div class="post-caption">
+        <p>{{ post.content }}</p>
+      </div>
+
+      <div class="post-footer">
+        <button class="like-button" [class.liked]="post.liked" (click)="toggleLike(post)">
+          <i class="fas fa-thumbs-up"></i> Like ({{ post.likes }})
+        </button>
+      
+
+        <button class="share-button">
+          <i class="fas fa-share-alt"></i> Share
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="create-post-footer">
+     <form (submit)="onSubmit()">
+      <input type="text" [(ngModel)]="newPostContent" placeholder="Post content" name="content" required />
+      <input type="file" (change)="onFileSelected($event)"#fileInput/>
+      <button type="submit">Create Post</button>
+    </form>
+  </div>
+  <div class="popup-overlay" *ngIf="isPopupVisible">
+    <div class="popup-content">
+      <h3>Message Sent</h3>
+      <p>Your message has been sent successfully!</p>
+      <button (click)="closePopup()">OK</button>
+    </div>
+  </div>
+</div>

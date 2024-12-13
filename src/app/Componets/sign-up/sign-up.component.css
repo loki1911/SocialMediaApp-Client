@@ -1,0 +1,79 @@
+.signup-form {
+    width: 40%;
+    margin: 2rem auto;
+    padding: 2rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .signup-form h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .signup-form input {
+    display: block;
+    width: 90%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+  }
+  
+  .signup-form button {
+    width: 80%;
+    padding: 0.75rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  .signup-form button:hover {
+    
+    background-color: #2d6bf0;
+    width: 75%;
+    opacity: 1; 
+    transform: scale(1.05);
+  }
+  .error-message {
+    color: red;
+    font-size: 0.875rem;
+    margin-top: 0.25rem; 
+}
+
+  
+  input.ng-invalid.ng-touched {
+    border-color: red;
+  }
+
+  
+  .facebook-signup {
+    background-color: #3b5998;
+    color: white;
+  }
+  
+  hr {
+    margin: 1.5rem 0;
+  }
+  
+  p {
+    font-size: 1rem;
+  }
+  
+  p a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  @media (max-width: 768px) {
+    .signup-form {
+      width: 90%;
+    }
+  }
+  
